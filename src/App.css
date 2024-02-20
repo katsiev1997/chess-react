@@ -40,10 +40,13 @@
   background-color: rgb(204, 223, 240);
 }
 
-/* .black {
-  background-color: rgb(12, 18, 24);
+.selected {
+  background-color: rgba(0, 128, 0, 0.411);
 }
 
-.white {
-  background-color: rgb(175, 211, 243);
-} */
+.available {
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  background-color: #22c022;
+}
