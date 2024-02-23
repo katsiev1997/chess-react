@@ -1,8 +1,8 @@
+import { Figure, FigureNames } from "./Figure";
+import { Colors } from "../Color";
+import { Cell } from "../Cell";
 import blackLogo from "../../assets/black-pawn.png";
 import whiteLogo from "../../assets/white-pawn.png";
-import { Cell } from "../Cell";
-import { Colors } from "../Color";
-import { Figure, FigureNames } from "./Figure";
 
 export class Pawn extends Figure {
   isFirstStep: boolean = true;
@@ -14,9 +14,7 @@ export class Pawn extends Figure {
   }
 
   canMove(target: Cell): boolean {
-    if (!super.canMove(target)) {
-      return false;
-    }
+    if (!super.canMove(target)) return false;
     const direction = this.cell.figure?.color === Colors.BLACK ? 1 : -1;
     const firstStepDirection =
       this.cell.figure?.color === Colors.BLACK ? 2 : -2;
@@ -30,15 +28,18 @@ export class Pawn extends Figure {
       return true;
     }
 
-    if (target.y === this.cell.y + direction
-        && (target.x === this.cell.x + 1 || target.x === this.cell.x - 1)
-        && this.cell.isEnemy(target)) {
-            return true
-        }
+    if (
+      target.y === this.cell.y + direction &&
+      (target.x === this.cell.x + 1 || target.x === this.cell.x - 1) &&
+      this.cell.isEnemy(target)
+    ) {
+      return true;
+    }
 
     return false;
   }
-  moveFigure(target: Cell): void {
+
+  moveFigure(target: Cell) {
     super.moveFigure(target);
     this.isFirstStep = false;
   }
